@@ -3,23 +3,22 @@
 #include <time.h>
 
 #include "./sortingAlgorithms/sorting.c"
+#include "./utils/dataGenerator.c"
 
 
-int sizes[] = { 1000, 5000, 25000, 100000, 500000 };
+int sizes[] = { 1000,2000,4000, 8000, 16000, 32000, 64000, 128000 };
 
-//int sizes[] = { 10 };
 
 void sortedArrayInput() {
     int sizesCount = sizeof(sizes)/sizeof(sizes[0]);
 
-
-    // array of function pointers
+    // array of function pointers //
     void (*methods[])(int*, int) = { bubbleSort };
 
-    //a loop on different input sizes
+    // a loop on different input sizes //
     for (int i = 0; i < sizesCount; i++) {
 
-        printf("generating data...\n");      
+//        printf("generating data...\n");      
         int *data = generateSortedData(sizes[i]);
         
         // sorting data and bench marking 
@@ -34,11 +33,11 @@ void sortedArrayInput() {
             
             double a = ((double)(end - start) / CLOCKS_PER_SEC);
             
-            printf("method %d takes to sort an array of size %d : %lf \n", j, sizes[i], a);
+            printf("%d\t%d\t%lf\n", j, sizes[i], a);
         }
         
-        printf("------------------ next size ------------------------\n\n");
-    }
+        // printf("------------------ next size ------------------------\n\n");
+    }    
 }
 
 void reversedArrayInput() {
