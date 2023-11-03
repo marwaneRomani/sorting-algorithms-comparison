@@ -3,14 +3,21 @@
 #include <time.h>
 #include "comparison.h"
 #include "./sortingAlgorithms/sorting.h"
-#include "./utils/dataGenerator.h"
-
-
-int sizes[] = { 1000,2000,4000, 8000, 16000, 32000, 64000, 128000 };
+#include "./utils/utils.h"
 
 
 void sortedArrayInput() {
-    int sizesCount = sizeof(sizes)/sizeof(sizes[0]);
+
+    int start = 100;
+    int increment = 100;
+    int end = 10000;
+    int size = (end - start) / increment + 1; // +1 to include the start value
+    int inputSizes[size];
+
+    for (int i = 0; i < size; ++i) {
+        inputSizes[i] = start + i * increment;
+    }
+    int sizesCount = sizeof(inputSizes)/sizeof(inputSizes[0]);
 
     // array of function pointers //
     void (*methods[])(int*, int) = { selectionSort };
@@ -19,7 +26,7 @@ void sortedArrayInput() {
     for (int i = 0; i < sizesCount; i++) {
 
 //        printf("generating data...\n");      
-        int *data = generateSortedData(sizes[i]);
+        int *data = generateSortedData(inputSizes[i]);
         
         // sorting data and bench marking 
         int methodsCount = sizeof(methods) / sizeof(methods[0]);
@@ -28,20 +35,20 @@ void sortedArrayInput() {
             clock_t start, end;
 
             start = clock();
-            methods[j](data, INPUT_SIZES[i]);       
+            methods[j](data, inputSizes[i]);       
             end = clock();
             
             double a = ((double)(end - start) / CLOCKS_PER_SEC);
             
             printf("%d\t%d\t%lf\n", j, INPUT_SIZES[i], a);
         }
-        
+
         // printf("------------------ next size ------------------------\n\n");
     }    
 }
 
 void reversedArrayInput() {
-    int sizesCount = sizeof(sizes)/sizeof(sizes[0]);
+//    int sizesCount = sizeof(sizes)/sizeof(sizes[0]);
 
 
 //     // array of function pointers
@@ -67,10 +74,6 @@ void reversedArrayInput() {
             
             // printf("method %d takes to sort an array of size %d : %lf \n", j, sizes[i], a);
         }
-        
-//         printf("------------------ next size ------------------------\n\n");
-//     }
-// }
 
 void randomArrayInput() {
     // int sizesCount = sizeof(sizes)/sizeof(sizes[0]);
@@ -99,7 +102,3 @@ void randomArrayInput() {
             
             // printf("method %d takes to sort an array of size %d : %lf \n", j, sizes[i], a);
         }
-        
-//         printf("------------------ next size ------------------------\n\n");
-//     }
-// }

@@ -1,4 +1,4 @@
-#include "utils.h"
+#include "../utils/utils.h"
 
 void bubbleSort(int *arr, int n) {
     int i, j, temp;

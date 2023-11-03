@@ -5,7 +5,7 @@ CC := gcc
 CFLAGS := -I.
 
 # Define the source files
-SRC := main.c comparison.c utils/dataGenerator.c sortingAlgorithms/sorting.c sortingAlgorithms/utils.c
+SRC := main.c comparison.c sortingAlgorithms/sorting.c utils/utils.c 
 
 # Define the program name
 PROG := prog
