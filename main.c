@@ -8,8 +8,9 @@ int main() {
 
     sortedArrayInput();
 
-    reversedArrayInput();
-    randomArrayInput();
+//    reversedArrayInput();
+    
+//    randomArrayInput();
 
     return 0;
 }
