@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-
-#include "comparison.c"
+#include "comparison.h"
 
 
 int main() {

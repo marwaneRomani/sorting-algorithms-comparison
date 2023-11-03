@@ -1,25 +1,25 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include "comparison.h"
+#include "./sortingAlgorithms/sorting.h"
+#include "./utils/dataGenerator.h"
 
-#include "./sortingAlgorithms/sorting.c"
-#include "./utils/dataGenerator.c"
 
-
-int sizes[] = { 1000,2000,4000, 8000, 16000, 32000, 64000, 128000 };
+// int sizes[] = { 1000,2000,4000, 8000, 16000, 32000, 64000, 128000 };
 
 
 void sortedArrayInput() {
-    int sizesCount = sizeof(sizes)/sizeof(sizes[0]);
+    int sizesCount = sizeof(INPUT_SIZES)/sizeof(INPUT_SIZES[0]);
 
     // array of function pointers //
-    void (*methods[])(int*, int) = { bubbleSort };
+    void (*methods[])(int*, int) = { selectionSort };
 
     // a loop on different input sizes //
     for (int i = 0; i < sizesCount; i++) {
 
 //        printf("generating data...\n");      
-        int *data = generateSortedData(sizes[i]);
+        int *data = generateSortedData(INPUT_SIZES[i]);
         
         // sorting data and bench marking 
         int methodsCount = sizeof(methods) / sizeof(methods[0]);
@@ -28,12 +28,12 @@ void sortedArrayInput() {
             clock_t start, end;
 
             start = clock();
-            methods[j](data, sizes[i]);       
+            methods[j](data, INPUT_SIZES[i]);       
             end = clock();
             
             double a = ((double)(end - start) / CLOCKS_PER_SEC);
             
-            printf("%d\t%d\t%lf\n", j, sizes[i], a);
+            printf("%d\t%d\t%lf\n", j, INPUT_SIZES[i], a);
         }
         
         // printf("------------------ next size ------------------------\n\n");
@@ -41,7 +41,7 @@ void sortedArrayInput() {
 }
 
 void reversedArrayInput() {
-    int sizesCount = sizeof(sizes)/sizeof(sizes[0]);
+    int sizesCount = sizeof(INPUT_SIZES)/sizeof(INPUT_SIZES[0]);
 
 
     // array of function pointers
@@ -51,7 +51,7 @@ void reversedArrayInput() {
     for (int i = 0; i < sizesCount; i++) {
 
         printf("generating data...\n");      
-        int *data = generateReversedSortedData(sizes[i]);
+        int *data = generateReversedSortedData(INPUT_SIZES[i]);
         
         // sorting data and bench marking 
         int methodsCount = sizeof(methods) / sizeof(methods[0]);
@@ -60,12 +60,12 @@ void reversedArrayInput() {
             clock_t start, end;
 
             start = clock();
-            methods[j](data, sizes[i]);       
+            methods[j](data, INPUT_SIZES[i]);       
             end = clock();
             
             double a = ((double)(end - start) / CLOCKS_PER_SEC);
             
-            printf("method %d takes to sort an array of size %d : %lf \n", j, sizes[i], a);
+            printf("method %d takes to sort an array of size %d : %lf \n", j, INPUT_SIZES[i], a);
         }
         
         printf("------------------ next size ------------------------\n\n");
@@ -73,7 +73,7 @@ void reversedArrayInput() {
 }
 
 void randomArrayInput() {
-    int sizesCount = sizeof(sizes)/sizeof(sizes[0]);
+    int sizesCount = sizeof(INPUT_SIZES)/sizeof(INPUT_SIZES[0]);
 
 
     // array of function pointers
@@ -83,7 +83,7 @@ void randomArrayInput() {
     for (int i = 0; i < sizesCount; i++) {
 
         printf("generating data...\n");      
-        int *data = generateRandomData(sizes[i]);
+        int *data = generateRandomData(INPUT_SIZES[i]);
         
         // sorting data and bench marking 
         int methodsCount = sizeof(methods) / sizeof(methods[0]);
@@ -92,12 +92,12 @@ void randomArrayInput() {
             clock_t start, end;
 
             start = clock();
-            methods[j](data, sizes[i]);       
+            methods[j](data, INPUT_SIZES[i]);       
             end = clock();
             
             double a = ((double)(end - start) / CLOCKS_PER_SEC);
             
-            printf("method %d takes to sort an array of size %d : %lf \n", j, sizes[i], a);
+            printf("method %d takes to sort an array of size %d : %lf \n", j, INPUT_SIZES[i], a);
         }
         
         printf("------------------ next size ------------------------\n\n");
