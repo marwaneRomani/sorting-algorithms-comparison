@@ -20,7 +20,7 @@ $(PROG): $(SRC)
 # Phony target to run the program
 .PHONY: run
 run: $(PROG)
-	./$(PROG)
+	./$(PROG) > data.txt
 
 # Phony target to clean the build
 .PHONY: clean

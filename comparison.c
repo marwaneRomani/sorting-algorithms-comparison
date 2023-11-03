@@ -10,7 +10,7 @@ void sortedArrayInput() {
 
     int start = 100;
     int increment = 100;
-    int end = 10000;
+    int end = 100000;
     int size = (end - start) / increment + 1; // +1 to include the start value
     int inputSizes[size];
 
@@ -40,7 +40,7 @@ void sortedArrayInput() {
             
             double a = ((double)(end - start) / CLOCKS_PER_SEC);
             
-            printf("%d\t%d\t%lf\n", j, INPUT_SIZES[i], a);
+            printf("%d\t%d\t%lf\n", j, inputSizes[i], a);
         }
 
         // printf("------------------ next size ------------------------\n\n");
