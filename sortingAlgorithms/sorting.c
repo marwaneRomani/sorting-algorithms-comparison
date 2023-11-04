@@ -66,3 +66,16 @@ void heapSort(int *array, int size)
 		heapify(array, i, 0, size);
 	}
 }
+
+void insertionSort(int *array, int size) {
+  for (int i = 1; i < size; i++) {
+    int tmp = array[i];
+    int j = i - 1;
+
+    while (tmp < array[j] && j >= 0) {
+      array[j + 1] = array[j];
+      --j;
+    }
+    array[j + 1] = tmp;
+  }
+}
