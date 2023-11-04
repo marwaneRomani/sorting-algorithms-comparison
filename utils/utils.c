@@ -1,8 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
-
 #include "utils.h"
 
+/**
+ * generateSortedData - Function that generate sorted data
+ *
+ * @limit: size of data to generate by this function
+ * Return: array of data
+ */
 int* generateSortedData(int limit) {
     
     int *data = malloc(sizeof(int) * limit);
@@ -14,6 +19,12 @@ int* generateSortedData(int limit) {
     return data;
 }
 
+/**
+ * generateReversedSortedData - Function that revesed data
+ *
+ * @limit: size of data to generate by this function
+ * Return: array of data
+ */
 int* generateReversedSortedData(int limit) {
     
     int *data = malloc(sizeof(int) * limit);
@@ -24,7 +35,12 @@ int* generateReversedSortedData(int limit) {
     return data;
 }
 
-
+/**
+ * generateRandomData - Function that generete random data
+ *
+ * @limit: size of data to generate by this function
+ * Return: array of data
+ */
 int* generateRandomData(int limit) {
     
     int *data = malloc(sizeof(int) * limit);
