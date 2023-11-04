@@ -5,6 +5,8 @@
 #include "./sortingAlgorithms/sorting.h"
 #include "./utils/utils.h"
 
+#include <pthread.h> 
+
 
 void sortedArrayInput(int start, int increment, int end) {
     int size = (end - start) / increment + 1; // +1 to include the start value
@@ -17,7 +19,9 @@ void sortedArrayInput(int start, int increment, int end) {
     int sizesCount = sizeof(inputSizes)/sizeof(inputSizes[0]);
 
     // array of function pointers //
-    void (*methods[])(int*, int) = { bubbleSort, heapSort, selectionSort, quickSort, insertionSort };
+    void (*methods[])(int*, int) = { selectionSort, bubbleSort, heapSort, insertionSort, quickSort };
+    // void (*methods[])(int*, int) = { insertionSort };
+
 
     // sorting data and bench marking 
     int methodsCount = sizeof(methods) / sizeof(methods[0]);
@@ -54,13 +58,15 @@ void sortedArrayInput(int start, int increment, int end) {
 
     // apply curve smoothing and print changes
     int methodIndex = results[0][0];
+    int currentMethod = 0;
+
     for (int i = 2; i < methodsCount * sizesCount - 1; i++) {
         //double res = convolution(times[i-1], times[i], times[i+1]);
 
         double total = 0.0;
 
-        for (int j = 0; j < i; j++) 
-            total += times[j];
+        for (int j = currentMethod; j < i; j++) 
+            total += times[j];      
         
 
         double res = total / i;
@@ -70,6 +76,7 @@ void sortedArrayInput(int start, int increment, int end) {
         if (results[i+1][0] != methodIndex) {
             printf("\n\n\n\n");
             methodIndex = results[i+1][0];
+            currentMethod = i;
         }
     }
     
