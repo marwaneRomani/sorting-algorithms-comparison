@@ -85,3 +85,34 @@ int partition(int array[], int size)
 	}
 	return (i + 1);
 }
+
+/**
+ * heapify - Recursive function to sort binary tree
+ * @array: array to be sorted as binary tree
+ * @end: Last node in binary tree
+ * @start: First node of binary tree
+ * @size: Size of the array to sort
+ * Return: 0
+ */
+void heapify(int *array, int end, int start, int size)
+{
+	int max = start;
+	int left = 2 * start + 1;
+	int right = 2 * start + 2;
+
+	if (!array || size < 2)
+		return;
+
+	if (left < end && array[left] > array[max])
+		max = left;
+
+	if (right < end && array[right] > array[max])
+		max = right;
+
+	if (start != max)
+	{
+		swap(&array[start], &array[max]);
+		
+		heapify(array, end, max, size);
+	}
+}

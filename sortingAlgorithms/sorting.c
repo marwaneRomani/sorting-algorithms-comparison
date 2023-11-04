@@ -49,3 +49,20 @@ void quickSort(int *array, int size)
 	/* repeat for index and right */
 	quickSort(array + pivot, size - pivot);
 }
+
+void heapSort(int *array, int size)
+{
+	int i;
+
+	if (!array || size < 2)
+		return;
+
+	for (i = size / 2; i >= 0; i--)
+		heapify(array, size, i, size);
+	for (i = size - 1; i >= 0; i--)
+	{
+		swap(&array[i], &array[0]);
+		
+		heapify(array, i, 0, size);
+	}
+}

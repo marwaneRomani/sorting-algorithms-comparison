@@ -4,3 +4,4 @@ int* generateRandomData(int );
 
 void swap(int *, int *);
 int partition(int [], int );
+void heapify(int *, int , int , int );
