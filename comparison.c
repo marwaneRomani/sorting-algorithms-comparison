@@ -17,6 +17,7 @@ void sortedArrayInput() {
     for (int i = 0; i < size; ++i) {
         inputSizes[i] = start + i * increment;
     }
+
     int sizesCount = sizeof(inputSizes)/sizeof(inputSizes[0]);
 
     // array of function pointers //
@@ -25,10 +26,14 @@ void sortedArrayInput() {
     // sorting data and bench marking 
     int methodsCount = sizeof(methods) / sizeof(methods[0]);
 
-    // a loop on different input sizes //
+    int results[methodsCount * sizesCount][2]; 
+    double times[methodsCount * sizesCount]; 
+
+    // a loop on different input sizes
+    int linesCounter = 0;
     for (int i = 0; i < methodsCount; i++) {
 
-        for (int j = 0; j < sizesCount; j++) {
+        for (int j = 0; j < sizesCount; j++, linesCounter++) {
 
             int *data = generateSortedData(inputSizes[j]);    
 
@@ -36,17 +41,37 @@ void sortedArrayInput() {
 
             start = clock();
             methods[i](data, inputSizes[j]);       
-            end = clock();
+            end = clock(); 
             
             double a = ((double)(end - start) / CLOCKS_PER_SEC);
             
-            printf("%d\t%d\t%lf\n", i, inputSizes[j], a);
+            
+            results[linesCounter][0] = i;
+            results[linesCounter][1] = inputSizes[j];
+            times[linesCounter] = a; 
+
+            // printf("%d\t%d\t%lf\n", i, inputSizes[j], a);
+
         }
+        
+    }
 
-            printf("\n\n\n\n");
+    // apply curve smoothing and print changes
+    for (int i = 2; i < methodsCount * sizesCount - 1; i++) {
+        //double res = convolution(times[i-1], times[i], times[i+1]);
 
-        // printf("------------------ next size ------------------------\n\n");
-    }    
+        double total = 0.0;
+
+        for (int j = 0; j < i; j++) 
+            total += times[j];
+        
+
+        double res = total / i;
+
+        printf("%d\t%d\t%lf\t\n", results[i][0], results[i][1], res);
+    }
+    
+    printf("\n\n\n\n");
 }
 
 void reversedArrayInput() {

@@ -13,8 +13,7 @@ void bubbleSort(int *arr, int n) {
 }
 
 
-void selectionSort(int *array,int size)
-{
+void selectionSort(int *array,int size) {
 	int i, j, min_idx;
 
 	if (!array)

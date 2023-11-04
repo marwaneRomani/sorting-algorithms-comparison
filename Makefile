@@ -15,7 +15,7 @@ all: $(PROG)
 
 # Link the program
 $(PROG): $(SRC)
-	$(CC) $(CFLAGS) -o $(PROG) $(SRC)
+	$(CC) $(CFLAGS) -o $(PROG) $(SRC) -lm
 
 # Phony target to run the program
 .PHONY: run

@@ -28,10 +28,11 @@ set output 'temps_execution.png'
 set title "Comparaison des temps d'exécution des algorithmes de tree"
 set xlabel "Nombre de données"
 set ylabel "Temps d'exécution (s)"
-
 set xrange [1000:10000]  # Définit la portée de l'axe x de 100 à 100000
 set ytics 0, 0.01        # Set the y-axis tics starting at -1 and incrementing by 0.1
 set key outside
+set key outside
+
 set grid
 
 plot "data.txt" index 0 using 2:3 with linespoints title 'Bubble sort' lc rgb 'blue' pt 3, \
