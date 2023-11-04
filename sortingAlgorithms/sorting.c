@@ -1,4 +1,5 @@
 #include "../utils/utils.h"
+#include <stdlib.h>
 
 void bubbleSort(int *arr, int n) {
     int i, j, temp;
@@ -77,4 +78,18 @@ void insertionSort(int *array, int size) {
     }
     array[j + 1] = tmp;
   }
+}
+
+void mergeSort(int *array, int size) {
+	int *temp;
+
+	if (!array || size < 2)
+		return;
+
+	temp = malloc(sizeof(*temp) * size);
+	if (!temp)
+		return;
+
+	_mergeSort(array, temp, size);
+	free(temp);
 }

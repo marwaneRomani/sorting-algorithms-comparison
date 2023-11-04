@@ -9,3 +9,4 @@ void heapify(int *, int , int , int );
 double gaussianWeight(double, double);
 double gaussienNormalization();
 double convolution(double priviousTime, double time, double nextTime);
+void _mergeSort(int *array, int *temp, int size);

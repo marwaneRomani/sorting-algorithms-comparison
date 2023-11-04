@@ -35,11 +35,12 @@ set key outside
 
 set grid
 
-plot "data.txt" index 0 using 2:3 with linespoints title 'Bubble sort' lc rgb 'blue' pt 1, \
-    "data.txt" index 1 using 2:3 with linespoints title 'heap sort' lc rgb 'red' pt 1 , \
-    "data.txt" index 2 using 2:3 with linespoints title 'Selection sort' lc rgb 'yellow' pt 1, \
-    "data.txt" index 3 using 2:3 with linespoints title 'qwik sort' lc rgb 'purple' pt 1, \
-    "data.txt" index 4 using 2:3 with linespoints title 'inserion sort' lc rgb 'steelblue' pt 1 
+plot "data.txt" index 0 using 2:3 with linespoints title 'Selection sort' lc rgb 'blue' pt 1, \
+     "data.txt" index 1 using 2:3 with linespoints title 'Bubble sort' lc rgb 'red' pt 1 , \
+     "data.txt" index 2 using 2:3 with linespoints title 'Heap sort' lc rgb 'yellow' pt 1, \
+     "data.txt" index 3 using 2:3 with linespoints title 'Inserion sort' lc rgb 'purple' pt 1, \
+     "data.txt" index 4 using 2:3 with linespoints title 'Quick sort' lc rgb 'steelblue' pt 1, \
+     "data.txt" index 5 using 2:3 with linespoints title 'Merge sort' lc rgb 'royalblue' pt 1
 
 END_SCRIPT
 )

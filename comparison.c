@@ -5,9 +5,6 @@
 #include "./sortingAlgorithms/sorting.h"
 #include "./utils/utils.h"
 
-#include <pthread.h> 
-
-
 void sortedArrayInput(int start, int increment, int end) {
     int size = (end - start) / increment + 1; // +1 to include the start value
     int inputSizes[size];
@@ -19,7 +16,7 @@ void sortedArrayInput(int start, int increment, int end) {
     int sizesCount = sizeof(inputSizes)/sizeof(inputSizes[0]);
 
     // array of function pointers //
-    void (*methods[])(int*, int) = { selectionSort, bubbleSort, heapSort, insertionSort, quickSort };
+    void (*methods[])(int*, int) = { selectionSort, bubbleSort, heapSort, insertionSort, quickSort, mergeSort };
     // void (*methods[])(int*, int) = { insertionSort };
 
 

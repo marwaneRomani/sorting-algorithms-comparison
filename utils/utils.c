@@ -168,3 +168,31 @@ void heapify(int *array, int end, int start, int size)
 		heapify(array, end, max, size);
 	}
 }
+
+/**
+ * _merge_sort - initiate merge sort
+ * @array: array to be sorted
+ * @temp: temporary array for holding sorted elements
+ * @size: size of the array
+ */
+void _mergeSort(int *array, int *temp, int size) {
+	int half = size / 2, i = 0, j = 0, k;
+
+	if (size < 2)
+		return;
+
+	_mergeSort(array, temp, half);
+	_mergeSort(array + half, temp + half, size - half);
+
+	for (k = 0; k < size; k++)
+		if (j >= size - half || (i < half && array[i] < (array + half)[j])) {
+			temp[k] = array[i];
+			i++;
+		}
+		else {
+			temp[k] = (array + half)[j];
+			j++;
+		}
+	for (k = 0; k < size; k++)
+		array[k] = temp[k];
+}
