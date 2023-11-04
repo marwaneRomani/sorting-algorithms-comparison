@@ -6,11 +6,11 @@
 
 int main() {
 
-    sortedArrayInput();
+    sortedArrayInput(100,100,10000);
 
-//    reversedArrayInput();
+//    reversedArrayInput(100,100,10000);
     
-//    randomArrayInput();
+//    randomArrayInput(100,100,10000);
 
     return 0;
 }

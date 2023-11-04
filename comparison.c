@@ -6,11 +6,7 @@
 #include "./utils/utils.h"
 
 
-void sortedArrayInput() {
-
-    int start = 100;
-    int increment = 100;
-    int end = 10000;
+void sortedArrayInput(int start, int increment, int end) {
     int size = (end - start) / increment + 1; // +1 to include the start value
     int inputSizes[size];
 
@@ -57,6 +53,7 @@ void sortedArrayInput() {
     }
 
     // apply curve smoothing and print changes
+    int methodIndex = results[0][0];
     for (int i = 2; i < methodsCount * sizesCount - 1; i++) {
         //double res = convolution(times[i-1], times[i], times[i+1]);
 
@@ -69,12 +66,16 @@ void sortedArrayInput() {
         double res = total / i;
 
         printf("%d\t%d\t%lf\t\n", results[i][0], results[i][1], res);
+
+        if (results[i+1][0] != methodIndex) {
+            printf("\n\n\n\n");
+            methodIndex = results[i+1][0];
+        }
     }
     
-    printf("\n\n\n\n");
 }
 
-void reversedArrayInput() {
+void reversedArrayInput(int start, int increment, int end) {
 //    int sizesCount = sizeof(sizes)/sizeof(sizes[0]);
 
 
@@ -102,7 +103,7 @@ void reversedArrayInput() {
             // printf("method %d takes to sort an array of size %d : %lf \n", j, sizes[i], a);
         }
 
-void randomArrayInput() {
+void randomArrayInput(int start, int increment, int end) {
     // int sizesCount = sizeof(sizes)/sizeof(sizes[0]);
 
 
