@@ -29,14 +29,13 @@ set title "Comparaison des temps d'exécution des algorithmes de tree"
 set xlabel "Nombre de données"
 set ylabel "Temps d'exécution (s)"
 
-set xrange [100:40000]
+set xrange [100:10000]
 set key outside
 set key outside
 
 set grid
 
-plot "data.txt" index 0 using 2:3 with linespoints title 'Bubble sort' lc rgb 'blue', \
-    "data.txt" index 1 using 2:3 with linespoints title 'Selection sort' lc rgb 'red'
+plot "data.txt" index 0 using 2:3 with linespoints title 'Bubble sort' lc rgb 'blue' pt 3
 END_SCRIPT
 )
 
