@@ -6,7 +6,7 @@
 
 int main() {
 
-    sortedArrayInput(100,100,10000);
+    sortedArrayInput(100,100,100000);
 
 //    reversedArrayInput(100,100,10000);
     
