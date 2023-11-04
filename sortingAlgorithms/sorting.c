@@ -32,3 +32,49 @@ void selectionSort(int *array,int size) {
 		}
 	}
 }
+
+void quickSort(int *array, int size)
+{
+	int pivot;
+
+	if (!array || size < 2)
+		return;
+
+	/* partition and get pivot index */
+	pivot = partition(array, size);
+
+	/* repeat for left of index */
+	quickSort(array, pivot);
+	/* repeat for index and right */
+	quickSort(array + pivot, size - pivot);
+}
+
+void heapSort(int *array, int size)
+{
+	int i;
+
+	if (!array || size < 2)
+		return;
+
+	for (i = size / 2; i >= 0; i--)
+		heapify(array, size, i, size);
+	for (i = size - 1; i >= 0; i--)
+	{
+		swap(&array[i], &array[0]);
+		
+		heapify(array, i, 0, size);
+	}
+}
+
+void insertionSort(int *array, int size) {
+  for (int i = 1; i < size; i++) {
+    int tmp = array[i];
+    int j = i - 1;
+
+    while (tmp < array[j] && j >= 0) {
+      array[j + 1] = array[j];
+      --j;
+    }
+    array[j + 1] = tmp;
+  }
+}
