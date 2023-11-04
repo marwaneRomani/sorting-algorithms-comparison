@@ -10,7 +10,7 @@ void sortedArrayInput() {
 
     int start = 100;
     int increment = 100;
-    int end = 100000;
+    int end = 10000;
     int size = (end - start) / increment + 1; // +1 to include the start value
     int inputSizes[size];
 
@@ -20,27 +20,27 @@ void sortedArrayInput() {
     int sizesCount = sizeof(inputSizes)/sizeof(inputSizes[0]);
 
     // array of function pointers //
-    void (*methods[])(int*, int) = { selectionSort };
+    void (*methods[])(int*, int) = { bubbleSort, selectionSort };
+
+    // sorting data and bench marking 
+    int methodsCount = sizeof(methods) / sizeof(methods[0]);
 
     // a loop on different input sizes //
-    for (int i = 0; i < sizesCount; i++) {
+    for (int i = 0; i < methodsCount; i++) {
 
-//        printf("generating data...\n");      
-        int *data = generateSortedData(inputSizes[i]);
-        
-        // sorting data and bench marking 
-        int methodsCount = sizeof(methods) / sizeof(methods[0]);
+        for (int j = 0; j < sizesCount; j++) {
 
-        for (int j = 0; j < methodsCount; j++) {
+            int *data = generateSortedData(inputSizes[j]);    
+
             clock_t start, end;
 
             start = clock();
-            methods[j](data, inputSizes[i]);       
+            methods[i](data, inputSizes[j]);       
             end = clock();
             
             double a = ((double)(end - start) / CLOCKS_PER_SEC);
             
-            printf("%d\t%d\t%lf\n", j, inputSizes[i], a);
+            printf("%d\t%d\t%lf\n", i, inputSizes[j], a);
         }
 
         // printf("------------------ next size ------------------------\n\n");

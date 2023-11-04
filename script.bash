@@ -33,8 +33,8 @@ set xrange [5000:100000]  # Définit la portée de l'axe x de 100 à 100000
 set key outside
 set grid
 
-plot "data.txt" index 0 using 2:3 with linespoints title 'Algorithme 1', \
-    "data.txt" index 1 using 2:3 with linespoints title 'Algorithme 2'
+plot "data.txt" index 0 using 2:3 with linespoints title 'Bubble Sort', \
+    "data.txt" index 1 using 2:3 with linespoints title 'Selection Sort'
 END_SCRIPT
 )
 
