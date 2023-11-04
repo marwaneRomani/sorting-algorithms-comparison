@@ -34,4 +34,18 @@ void selectionSort(int *array,int size)
 	}
 }
 
+void quickSort(int *array, int size)
+{
+	int pivot;
 
+	if (!array || size < 2)
+		return;
+
+	/* partition and get pivot index */
+	pivot = partition(array, size);
+
+	/* repeat for left of index */
+	quickSort(array, pivot);
+	/* repeat for index and right */
+	quickSort(array + pivot, size - pivot);
+}

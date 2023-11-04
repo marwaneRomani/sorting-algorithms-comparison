@@ -20,7 +20,7 @@ void sortedArrayInput() {
     int sizesCount = sizeof(inputSizes)/sizeof(inputSizes[0]);
 
     // array of function pointers //
-    void (*methods[])(int*, int) = { bubbleSort, selectionSort };
+    void (*methods[])(int*, int) = { quickSort };
 
     // sorting data and bench marking 
     int methodsCount = sizeof(methods) / sizeof(methods[0]);

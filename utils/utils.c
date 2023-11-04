@@ -49,3 +49,39 @@ void swap(int *a, int *b) {
 	*b = *a;
 	*a = tmp;
 }
+
+/**
+ * partition - Function that sets the pivot for quick_sort
+ *
+ * @array: Array to partition
+ * @size: Size of array
+ * Return: (i + 1)
+ */
+int partition(int array[], int size)
+{
+	int pivot;
+	int i = -1;
+	int j;
+
+	if (!array || size < 2)
+		return (0);
+
+	pivot = array[size - 1];
+
+	for (j = 0; j < size - 1; j++)
+	{
+		if (array[j] <= pivot)
+		{
+			i++;
+			if (i != j)
+			{
+				swap(&array[i], &array[j]);
+			}
+		}
+	}
+	if (i + 1 != size - 1)
+	{
+		swap(&array[i + 1], &array[size - 1]);
+	}
+	return (i + 1);
+}

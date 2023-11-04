@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# # Run 'make run' first
+# Run 'make run' first
 make run
 if [ $? -ne 0 ]; then
     echo "Make run failed."
@@ -29,12 +29,12 @@ set title "Comparaison des temps d'exécution des algorithmes de tree"
 set xlabel "Nombre de données"
 set ylabel "Temps d'exécution (s)"
 
-set xrange [5000:100000]  # Définit la portée de l'axe x de 100 à 100000
+set xrange [1000:10000]  # Définit la portée de l'axe x de 100 à 100000
 set key outside
 set grid
 
-plot "data.txt" index 0 using 2:3 with linespoints title 'Bubble Sort', \
-    "data.txt" index 1 using 2:3 with linespoints title 'Selection Sort'
+plot "data.txt" index 0 using 2:3 with linespoints title 'Bubble sort' lc rgb 'blue', \
+    "data.txt" index 1 using 2:3 with linespoints title 'Selection sort' lc rgb 'red'
 END_SCRIPT
 )
 
