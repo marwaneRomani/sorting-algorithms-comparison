@@ -20,7 +20,7 @@ void sortedArrayInput() {
     int sizesCount = sizeof(inputSizes)/sizeof(inputSizes[0]);
 
     // array of function pointers //
-    void (*methods[])(int*, int) = { bubbleSort, selectionSort };
+    void (*methods[])(int*, int) = { bubbleSort, selectionSort, selectionSort };
 
     // sorting data and bench marking 
     int methodsCount = sizeof(methods) / sizeof(methods[0]);
@@ -42,6 +42,8 @@ void sortedArrayInput() {
             
             printf("%d\t%d\t%lf\n", i, inputSizes[j], a);
         }
+        
+        printf("\n\n\n\n");
 
         // printf("------------------ next size ------------------------\n\n");
     }    
